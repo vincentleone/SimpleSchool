@@ -15,5 +15,5 @@
 |11| Test APIs with Postman| Incomplete||||
 |12| Test Frontend on iOS, Android, and Web| Incomplete||||
 |13| Research Possible Tool Stack| Incomplete||||
-|14| Select and Document Tool Stack| Incomplete|\\\
+|14| Select and Document Tool Stack| Incomplete||||
 |15|
