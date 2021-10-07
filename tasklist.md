@@ -1,6 +1,6 @@
 # Simple School Task List
 
-|#|Task|Status|Deadline|Gabe Effort|Vincent Effort|
+|#|Task|Status|
 |-|----|------|
 |1| Research different UI frameworks| Incomplete|
 |2| Create UI wireframes| Incomplete|
