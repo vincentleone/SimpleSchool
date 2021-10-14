@@ -54,3 +54,14 @@
 # Backend Research
 
 # Database Research
+
+## Database Types
+|DB Tool|Link to Tool|
+|-------|------------|
+|MongoDB| [Link](https://www.mongodb.com/) |
+|MySQL| [Link](https://www.mysql.com/) |
+|HeidiSQL| [Link](https://www.heidisql.com/) |
+
+## Database Frameworks
+|DB Framework| Link to Documentation|
+|------------|----------------------|
