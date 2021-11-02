@@ -1,19 +1,21 @@
 # Simple School Research
 
 ### Table of Contents
+- [Simple School Research](#simple-school-research)
+    - [Table of Contents](#table-of-contents)
 - [UI Research](#ui-research)
-    - [Wireframes](#wireframes)
-    - [UI Frameworks](#ui-frameworks)
-    - [UI Testing](#ui-testing)
-    - [Rational](#ui-rational)
+  - [Wireframes](#wireframes)
+    - [Figma](#figma)
+  - [UI Frameworks](#ui-frameworks)
+    - [React](#react)
+          - [StoryBook](#storybook)
+    - [Angular](#angular)
+    - [Vue.js](#vuejs)
+    - [Flutter](#flutter)
 - [Backend Research](#backend-research)
-    - [Backend Frameworks](#backend-framework)
-    - [Backend Testing](#backend-testing)
-    - [Rational](#backend-rational)
 - [Database Research](#database-research)
-    - [Database Types](#database-types)
-    - [Database Frameworks](#database-frameworks)
-    - [Rational](#database-rational)
+  - [Database Types](#database-types)
+  - [Database Frameworks](#database-frameworks)
 
 
 
@@ -24,14 +26,12 @@
 |Wireframe Tool|Link to Tool|
 |--------------|------------|
 | [Figma](#figma)| [Link](https://www.figma.com/)|
-| [Invision Freehand](#invision-freehand)| [Link](https://www.invisionapp.com/freehand)|
-| [Mockplus](#mockplus) | [Link](#https://www.mockplus.com/)|
 
 ### Figma
+Figma is a free web application for collaborative UI designing and prototyping.
 
-### Invision Freehand
+Getting started [youtube](https://www.youtube.com/watch?v=jk1T0CdLxwU) video. 
 
-### Mockplus
 
 
 ## UI Frameworks
@@ -44,6 +44,19 @@
 
 
 ### React
+*Component Libaries*
+| Library | Link |
+|---------|------|
+|Material Kit| [Link](https://www.creative-tim.com/product/material-kit-react/?partner=91096)|
+|VechaiUI| [Link](https://www.vechaiui.com/)|
+|Ant Design for React| [Link](https://ant.design/docs/react/introduce)|
+|Shards| [Link](https://designrevision.com/downloads/shards-react/)|
+|StoryBook| [Link](https://storybook.js.org/docs/react/get-started/install)|
+
+###### StoryBook
+StoryBook is not a component library, but a tool to help you create and test React components without modifying your existing code base.
+
+After researching this tool, I believe it can greatly reduce our UI development time due to its easy of use. 
 
 ### Angular
 
