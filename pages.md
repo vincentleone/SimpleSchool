@@ -6,7 +6,7 @@ This  document contains a list of all the pages that need to be created in order
 |1|[Loading Screen](#loading-screen)||
 |2|[Sign up page](#sign-up-page)||
 |3|[Login Page](#login-page)||
-|4|[Home Page](#home-page)||
+|4|[Landing Page](#home-page)||
 |5|[Calendar View](#calendar-view)||
 |6|[Class View List](#class-view-list)|
 |7|[Class View](#class-view)||
@@ -47,8 +47,8 @@ This page is where the user will go to login.
         - If input is valid, redirect to Calendar View
         - else, display alert of invalid inputs and change input boxes border colors to red
 
-# Home Page
-This is the first page a user will see when they visit the websit. 
+# Landing Page
+This is the first page a user will see when they visit the website if they are a user 
 
 **Contains:**
 - A button to redirect to sign up page
