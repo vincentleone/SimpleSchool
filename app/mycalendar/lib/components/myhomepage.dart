@@ -12,12 +12,27 @@ class MyHomePage extends StatelessWidget {
       height: MediaQuery.of(context).size.height,
       child: Row(
         children: <Widget>[
-          // Left Sidebar 
+          // Left Sidebar
           Expanded(
-            flex: 15,
+            flex: 10,
             child: Container(
-              color: Colors.lightBlue[400],
-            ),
+                color: Colors.lightBlue[400],
+                child: Column(
+                  children: <Widget>[
+                    Expanded(
+                      flex: 40,
+                      child: Container(
+                        color: Colors.purple,
+                      ),
+                    ),
+                    Expanded(
+                      flex: 60,
+                      child: Container(
+                        color: Colors.deepPurple,
+                      ),
+                    )
+                  ],
+                )),
           ),
           Expanded(
             flex: 70,
@@ -29,7 +44,7 @@ class MyHomePage extends StatelessWidget {
             ),
           ),
           Expanded(
-            flex: 15,
+            flex: 20,
             child: Container(
               color: Colors.blueGrey,
             ),

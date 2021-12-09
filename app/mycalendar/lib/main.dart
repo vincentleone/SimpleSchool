@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
-import 'components/mycalendar.dart';
+import 'components/myhomepage_daily.dart';
 import 'components/myhomepage.dart';
 
 void main() {
@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: MyHomePage(),
+      home: MyHomePageDaily(),
     );
   }
 }
