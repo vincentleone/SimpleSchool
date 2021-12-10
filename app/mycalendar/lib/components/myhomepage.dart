@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'mycalendar.dart';
 import 'myclasses.dart';
+import 'userclasses.dart';
 
 class MyHomePage extends StatelessWidget {
   const MyHomePage({Key? key}) : super(key: key);
@@ -14,7 +15,7 @@ class MyHomePage extends StatelessWidget {
         children: <Widget>[
           // Left Sidebar
           Expanded(
-            flex: 10,
+            flex: 15,
             child: Container(
                 color: Colors.lightBlue[400],
                 child: Column(
@@ -22,13 +23,21 @@ class MyHomePage extends StatelessWidget {
                     Expanded(
                       flex: 40,
                       child: Container(
-                        color: Colors.purple,
+                        color: Colors.white,
                       ),
                     ),
                     Expanded(
                       flex: 60,
                       child: Container(
-                        color: Colors.deepPurple,
+                        // decoration: BoxDecoration(
+                        //     color: Colors.white,
+                        //     border: Border(
+                        //         // top: BorderSide(
+                        //         //     color: Colors.lightBlueAccent, width: 1),
+                        //         right: BorderSide(
+                        //             width: 1, color: Colors.white10))),
+                        color: Colors.white,
+                        child: UserClasses(),
                       ),
                     )
                   ],
@@ -37,14 +46,16 @@ class MyHomePage extends StatelessWidget {
           Expanded(
             flex: 70,
             child: Container(
-              color: Colors.red,
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  border: Border.all(width: 1, color: Colors.grey)),
               child: MyCalendar(
                 title: "Test",
               ),
             ),
           ),
           Expanded(
-            flex: 20,
+            flex: 15,
             child: Container(
               color: Colors.blueGrey,
             ),
