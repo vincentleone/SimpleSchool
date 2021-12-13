@@ -9,26 +9,55 @@ class MyHomePage extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: MediaQuery.of(context).size.height,
+    return Material(
+      //height: MediaQuery.of(context).size.height,
       child: Row(
         children: <Widget>[
           // Left Sidebar
           Expanded(
             flex: 15,
-            child: Container(
-                color: Colors.lightBlue[400],
+            child: Material(
+                //color: Colors.lightBlue[400],
                 child: Column(
-                  children: <Widget>[
+              children: <Widget>[
+                Expanded(
+                  flex: 40,
+                  child: Material(
+                      //decoration: BoxDecoration(color: Colors.white),
+                      // color: Colors.wh
+                      ),
+                ),
+                Expanded(
+                  flex: 60,
+                  child: Column(children: <Widget>[
                     Expanded(
-                      flex: 40,
-                      child: Container(
-                        color: Colors.white,
+                      flex: 5,
+                      child: Material(
+                        //width: MediaQuery.of(context).size.width,
+                        //decoration: BoxDecoration(
+                        //  color: Colors.white,
+                        //border:
+                        //  Border(bottom: BorderSide(color: Colors.grey))),
+                        child: Material(
+                          child: Center(
+                            child: Text(
+                              "Your Classes",
+                              style: TextStyle(
+                                  fontSize: 12.0,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold,
+                                  fontStyle: FontStyle.normal),
+                            ),
+                          ),
+                        ),
                       ),
                     ),
                     Expanded(
-                      flex: 60,
-                      child: Container(
+                        flex: 95,
+                        child: Material(
+                          //color: Colors.white,
+                          child: UserClasses(),
+                        )
                         // decoration: BoxDecoration(
                         //     color: Colors.white,
                         //     border: Border(
@@ -36,21 +65,23 @@ class MyHomePage extends StatelessWidget {
                         //         //     color: Colors.lightBlueAccent, width: 1),
                         //         right: BorderSide(
                         //             width: 1, color: Colors.white10))),
-                        color: Colors.white,
-                        child: UserClasses(),
-                      ),
-                    )
-                  ],
-                )),
+                        //color: Colors.white
+                        )
+                  ]),
+                )
+              ],
+            )),
           ),
           Expanded(
             flex: 70,
             child: Container(
               decoration: BoxDecoration(
-                  color: Colors.white,
-                  border: Border.all(width: 1, color: Colors.grey)),
-              child: MyCalendar(
-                title: "Test",
+                    color: Colors.white,
+                    border: Border.all(width: 0.5, color: Colors.grey)),
+              child: Material(
+                child: MyCalendar(
+                  title: "Test",
+                ),
               ),
             ),
           ),

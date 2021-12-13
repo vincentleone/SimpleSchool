@@ -24,30 +24,46 @@ class _UserClassesState extends State<UserClasses> {
 
   Widget _buildClassList() {
     return ListView.separated(
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.all(2),
       itemCount: classList.length,
       itemBuilder: (BuildContext context, int index) {
         isSelected.add(false);
-        return ElevatedButton.icon(
-          style: ElevatedButton.styleFrom(
-                primary: Colors.white,
-                padding: EdgeInsets.symmetric(horizontal: 50, vertical: 20),
-                textStyle: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold)),
-          onPressed: () => {
-            setState(() {
-              isSelected[index] = !isSelected[index];
-            })
-          },
-          icon: Icon(isSelected[index] ? Icons.circle : Icons.circle_outlined,
-              color: Colors.lightBlue),
-
-          // background: MaterialStateProperty.all<Color>(red) ,
-          label: Text(
-            '${classList[index]}',
-            style: TextStyle(color: Colors.black),
-          ),
+        return Container(
+          // height: MediaQuery.of(context).size.height * 0.02,
+          width: MediaQuery.of(context).size.width,
+          child: Row(
+            //Align here
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+            TextButton.icon(
+              icon: Icon(
+                  isSelected[index] ? Icons.circle : Icons.circle_outlined,
+                  color: Colors.lightBlue,
+                  size: 14),
+              label: Text('${classList[index]}',
+                  style: TextStyle(color: Colors.black)),
+              style: ElevatedButton.styleFrom(
+                  primary: Colors.white,
+                  padding: EdgeInsets.fromLTRB(16, 4, 8, 4),
+                  textStyle:
+                      TextStyle(fontSize: 14, fontWeight: FontWeight.bold)),
+              onPressed: () => {
+                setState(() {
+                  isSelected[index] = !isSelected[index];
+                })
+              },
+            ),
+            Material(
+              color: Colors.white,
+              child: IconButton(
+                  iconSize: 16,
+                  onPressed: () {
+                    print("Tickle me elmo");
+                  },
+                  icon: Icon(Icons.menu)),
+            )
+          ]),
         );
       },
       separatorBuilder: (BuildContext context, int index) => const Divider(),

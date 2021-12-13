@@ -28,38 +28,47 @@ class _UserClassesState extends State<UserClasses> {
       itemCount: classList.length,
       itemBuilder: (BuildContext context, int index) {
         isSelected.add(false);
-        return Container(
+        return Material(
           // height: MediaQuery.of(context).size.height * 0.02,
-          width: MediaQuery.of(context).size.width,
+          // width: MediaQuery.of(context).size.width,
           child: Row(
               //Align here
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                TextButton.icon(
-                  icon: Icon(
-                      isSelected[index] ? Icons.circle : Icons.circle_outlined,
-                      color: Colors.lightBlue,
-                      size: 12),
-                  label: Text('${classList[index]}',
-                      style: TextStyle(color: Colors.black)),
-                  style: ElevatedButton.styleFrom(
-                      primary: Colors.white,
-                      padding: EdgeInsets.fromLTRB(2, 4, 8, 4),
-                      textStyle:
-                          TextStyle(fontSize: 12, fontWeight: FontWeight.bold)),
-                  onPressed: () => {
-                    setState(() {
-                      isSelected[index] = !isSelected[index];
-                    })
-                  },
+                Material(
+                  child: SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: TextButton.icon(
+                      icon: Icon(
+                          isSelected[index]
+                              ? Icons.circle
+                              : Icons.circle_outlined,
+                          color: Colors.lightBlue,
+                          size: 12),
+                      label: Text('${classList[index]}'),
+                      style: TextButton.styleFrom(
+                          primary: Colors.blueGrey,
+                          onSurface: Colors.red,
+                          padding: EdgeInsets.fromLTRB(2, 4, 8, 4),
+                          textStyle: TextStyle(
+                              fontSize: 12, fontWeight: FontWeight.bold)),
+                      onPressed: () => {
+                        setState(() {
+                          var tmp = !isSelected[index];
+                          print("class $index $tmp");
+                          isSelected[index] = tmp;
+                        })
+                      },
+                    ),
+                  ),
                 ),
                 Material(
                   color: Colors.white,
                   child: IconButton(
                       iconSize: 16,
                       onPressed: () {
-                        print("Tickle me elmo");
+                        print("Tickle me elmo $index");
                       },
                       icon: Icon(Icons.menu)),
                 )
