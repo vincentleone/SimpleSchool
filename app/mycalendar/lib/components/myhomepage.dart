@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'mycalendar.dart';
 import 'myclasses.dart';
 import 'userclasses.dart';
+import 'myuserstats.dart';
+import 'mychecklist.dart';
 
 class MyHomePage extends StatelessWidget {
   const MyHomePage({Key? key}) : super(key: key);
@@ -22,10 +24,7 @@ class MyHomePage extends StatelessWidget {
               children: <Widget>[
                 Expanded(
                   flex: 40,
-                  child: Material(
-                      //decoration: BoxDecoration(color: Colors.white),
-                      // color: Colors.wh
-                      ),
+                  child: MyUserStats(),
                 ),
                 Expanded(
                   flex: 60,
@@ -52,6 +51,7 @@ class MyHomePage extends StatelessWidget {
                         ),
                       ),
                     ),
+                    Divider(),
                     Expanded(
                         flex: 95,
                         child: Material(
@@ -76,8 +76,8 @@ class MyHomePage extends StatelessWidget {
             flex: 70,
             child: Container(
               decoration: BoxDecoration(
-                    color: Colors.white,
-                    border: Border.all(width: 0.5, color: Colors.grey)),
+                  color: Colors.white,
+                  border: Border.all(width: 0.5, color: Colors.grey)),
               child: Material(
                 child: MyCalendar(
                   title: "Test",
@@ -88,7 +88,17 @@ class MyHomePage extends StatelessWidget {
           Expanded(
             flex: 15,
             child: Container(
-              color: Colors.blueGrey,
+              height: MediaQuery.of(context).size.height,
+              child: Column(children: [
+                Container(
+                  padding: EdgeInsets.fromLTRB(2, 8, 8, 0),
+                  child: Center(
+                    child: Text("Todos"),
+                  ),
+                ),
+                Divider(),
+                MyCheckList(),
+              ]),
             ),
           ),
         ],

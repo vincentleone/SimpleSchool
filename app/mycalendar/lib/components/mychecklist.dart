@@ -2,27 +2,26 @@ import 'dart:html';
 
 import 'package:flutter/material.dart';
 
-class UserClasses extends StatefulWidget {
+class MyCheckList extends StatefulWidget {
   @override
-  _UserClassesState createState() => _UserClassesState();
+  _MyCheckList createState() => _MyCheckList();
 }
 
-class _UserClassesState extends State<UserClasses> {
+class _MyCheckList extends State<MyCheckList> {
   // Assume DB Call here
   final _style = TextStyle(fontSize: 40.0, color: Colors.blueGrey);
   final List<String> classList = <String>[
-    "Calc1",
-    "Calc2",
-    "Calc3",
-    "Automata",
-    "Parallel Computing",
-    "Network Science"
+    "Assignment Calc 1",
+    "Assignment Calc 2",
+    "Assignment Calc 3",
+    "Exam Automata",
+    "Project Parallel Computing",
+    "Assignment Network Science"
   ];
-  final colors = [Colors.blue, Colors.lightBlue];
 
   final isSelected = <bool>[];
 
-  Widget _buildClassList() {
+  Widget _buildItemList() {
     return ListView.separated(
       padding: const EdgeInsets.all(2),
       itemCount: classList.length,
@@ -46,7 +45,8 @@ class _UserClassesState extends State<UserClasses> {
                               : Icons.circle_outlined,
                           color: Colors.lightBlue,
                           size: 12),
-                      label: Text('${classList[index]}'),
+                      label: Text('${classList[index]}',
+                          overflow: TextOverflow.clip),
                       style: TextButton.styleFrom(
                           primary: Colors.blueGrey,
                           onSurface: Colors.red,
@@ -63,15 +63,6 @@ class _UserClassesState extends State<UserClasses> {
                     ),
                   ),
                 ),
-                Container(
-                  color: Colors.white,
-                  child: IconButton(
-                      iconSize: 16,
-                      onPressed: () {
-                        print("Tickle me elmo $index");
-                      },
-                      icon: Icon(Icons.menu)),
-                )
               ]),
         );
       },
@@ -81,10 +72,10 @@ class _UserClassesState extends State<UserClasses> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: MediaQuery.of(context).size.height,
-      width: MediaQuery.of(context).size.width,
-      child: _buildClassList(),
+    return Expanded(
+      // height: MediaQuery.of(context).size.height,
+      //width: MediaQuery.of(context).size.width,
+      child: _buildItemList(),
     );
   }
 }
