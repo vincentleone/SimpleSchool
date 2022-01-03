@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
-import 'meeting.dart';
+import './object/meeting.dart';
+import 'mycalendarentryform.dart';
 
 class MyCalendar extends StatefulWidget {
   const MyCalendar({Key? key, required this.title}) : super(key: key);
@@ -12,20 +13,27 @@ class MyCalendar extends StatefulWidget {
 }
 
 class _MyCalendar extends State<MyCalendar> {
+  final _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: SfCalendar(
-      view: CalendarView.week,
-      allowAppointmentResize: true,
-      dataSource: MeetingDataSource(_getDataSource()),
-      timeSlotViewSettings: TimeSlotViewSettings(
-        timeIntervalWidth: 100,
-      ),
-      onTap: (CalendarTapDetails details) {
-        print(details.date!);
-      },
-    ));
+      body: SfCalendar(
+          view: CalendarView.week,
+          allowAppointmentResize: true,
+          dataSource: MeetingDataSource(_getDataSource()),
+          timeSlotViewSettings: TimeSlotViewSettings(
+            timeIntervalWidth: 100,
+          ),
+          onTap: (CalendarTapDetails details) {
+            print(details.date!);
+            showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return MyCalendarEntryForm(startdate: details.date!);
+                });
+          }),
+    );
   }
 }
 

@@ -4,9 +4,12 @@ import 'myclasses.dart';
 import 'userclasses.dart';
 import 'myuserstats.dart';
 import 'mychecklist.dart';
+import 'user.dart';
 
 class MyHomePage extends StatelessWidget {
-  const MyHomePage({Key? key}) : super(key: key);
+  User user;
+
+  const MyHomePage({Key? key, required this.user}) : super(key: key);
 
   // This widget is the root of your application.
   @override

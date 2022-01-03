@@ -4,7 +4,7 @@ import 'package:syncfusion_flutter_calendar/calendar.dart';
 import 'components/myhomepage_daily.dart';
 import 'components/myhomepage.dart';
 
-void main() {
+Future main() async {
   runApp(const MyApp());
 }
 
@@ -15,8 +15,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme:
-          ThemeData(brightness: Brightness.light, primaryColor: Colors.blue, secondaryHeaderColor: Colors.green),
+      theme: ThemeData(
+          brightness: Brightness.light,
+          primaryColor: Colors.blue,
+          secondaryHeaderColor: Colors.green),
       home: MyHomePage(),
     );
   }
