@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 import 'package:simpleschool/model/meeting.dart';
-import 'package:simpleschool/widget/calendar_update_view.dart';
+import 'package:simpleschool/widget/calendar_input_form.dart';
+import 'package:simpleschool/widget/calendar_input_form_with_to.dart';
+import 'package:simpleschool/widget/calendar_input_form_type_menu.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class MyCalendar extends StatefulWidget {
@@ -17,6 +19,7 @@ class MyCalendar extends StatefulWidget {
 
 class _MyCalendar extends State<MyCalendar> {
   final User user;
+  String entryType = "1";
 
   _MyCalendar(this.user);
   @override
@@ -34,12 +37,52 @@ class _MyCalendar extends State<MyCalendar> {
       timeSlotViewSettings: TimeSlotViewSettings(
         timeIntervalWidth: 100,
       ),
-      onTap: (CalendarTapDetails details) {
+      onTap: (CalendarTapDetails details) async {
         // print(details.date!);
         // print(details.appointments);
         // print(details.targetElement);
-        print("${user.displayName}\n${details.date}");
-       
+        //print("${user.displayName}\n${details.date}");
+        await showDialog(
+            context: context,
+            builder: (BuildContext context) {
+              return AlertDialog(
+                scrollable: true,
+                title: Text('Select an entry type'),
+                content: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: CalendarInputFormTypeMenu(
+                      callback: (val) => setState(() => entryType = val)),
+                ),
+              );
+            });
+        //print(entryType);
+        if (entryType == 'Assignment' ||
+            entryType == 'Exam' ||
+            entryType == 'Quiz') {
+          await showDialog(
+              context: context,
+              builder: (BuildContext context) {
+                return AlertDialog(
+                  scrollable: true,
+                  content: Padding(
+                      padding: const EdgeInsets.all(8),
+                      // need to updte to accept class
+                      child: CalendarInputForm(details, user, entryType)),
+                );
+              });
+        } else if (entryType == 'Class') {
+          await showDialog(
+              context: context,
+              builder: (BuildContext context) {
+                return AlertDialog(
+                  scrollable: true,
+                  content: Padding(
+                      padding: const EdgeInsets.all(8),
+                      // need to updte to accept class
+                      child: CalendarInputFormWithTo(details, user, entryType)),
+                );
+              });
+        }
       },
     ));
   }

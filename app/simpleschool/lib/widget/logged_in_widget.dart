@@ -3,22 +3,19 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:simpleschool/widget/weekly_calendar_widget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-
 class UserLoggedInWidget extends StatelessWidget {
   @override
-  
   Widget build(BuildContext context) {
     final user = FirebaseAuth.instance.currentUser!;
 
     try {
-      CollectionReference users = FirebaseFirestore.instance.collection('users');
+      CollectionReference users =
+          FirebaseFirestore.instance.collection('users');
       var name = user.uid;
-      var res = FirebaseFirestore.instance.doc('users/$name');
-      if (res.id != null) {
-        print('exists');
-      } else {
-        users.add({'id': name});
-      }
+      print(name);
+      var res = FirebaseFirestore.instance
+        ..collection('users').doc('${name}').update({'first_login': false});
+      print(res);
     } catch (err) {
       print(err);
     }

@@ -46,6 +46,8 @@ dependencies:
   flutter_slidable: ^1.2.0
   syncfusion_flutter_core: ^19.4.40
   syncfusion_flutter_calendar: ^19.4.40
+  flutter_form_builder: ^7.0.0
+  string_validator: ^0.3.0
 
 
 dev_dependencies:
