@@ -4,22 +4,37 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:simpleschool/widget/weekly_calendar_widget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:string_validator/string_validator.dart';
 
 class UserLoggedInWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final user = FirebaseAuth.instance.currentUser!;
 
-    try {
-      CollectionReference users =
-          FirebaseFirestore.instance.collection('users');
-      var name = user.uid;
-      print(name);
-      var res = FirebaseFirestore.instance
-        ..collection('users').doc('${name}').update({'first_login': false});
-      print(res);
-    } catch (err) {
-      print(err);
+    /// Check If Document Exists
+    Future<bool> doesUserExist() async {
+      var a = await FirebaseFirestore.instance
+          .collection('users')
+          .doc(user.uid)
+          .get();
+      if (a.exists) {
+        //print('Exists');
+        return true;
+      }
+      if (!a.exists) {
+        //print('Not exists');
+        FirebaseFirestore.instance
+            .collection('users')
+            .doc(user.uid)
+            .set({'first_login': false});
+        return false;
+      }
+      return false;
+    }
+
+    var tmp = doesUserExist();
+    if (tmp == true) {
+      print(true);
     }
 
     return Row(children: [
