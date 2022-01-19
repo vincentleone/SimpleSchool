@@ -13,45 +13,50 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class MyCalendar extends StatefulWidget {
-  const MyCalendar({Key? key, required this.title, required this.user})
+List<Color> colors = [
+  Colors.blue.shade300,
+  Colors.red.shade300,
+  Colors.orange.shade300,
+  Colors.green.shade300,
+  Colors.purple.shade300,
+  Colors.pink.shade300,
+  Colors.grey.shade300,
+  Colors.yellow.shade300,
+  Colors.teal.shade300,
+];
+
+class MyCalendar2 extends StatefulWidget {
+  const MyCalendar2({Key? key, required this.title, required this.user})
       : super(key: key);
 
   final String title;
   final User user;
 
   @override
-  State<MyCalendar> createState() => _MyCalendar(user);
+  State<MyCalendar2> createState() => _MyCalendar2(user);
 }
 
 //MeetingDataSource? events;
 
-class _MyCalendar extends State<MyCalendar> {
+class _MyCalendar2 extends State<MyCalendar2> {
   final User user;
   String entryType = "1";
-  
+
   List<Color> _colorCollection = <Color>[];
 
-  _MyCalendar(this.user);
+  _MyCalendar2(this.user);
 
-  @override
-  Widget build(BuildContext context) {
-
+  Widget _calendar(List<Meeting> _meetings) {
     return Scaffold(
         body: SfCalendar(
       view: CalendarView.week,
       showDatePickerButton: true,
       allowAppointmentResize: true,
       showCurrentTimeIndicator: true,
-      monthViewSettings: const MonthViewSettings(showAgenda: true),
-      dataSource: MeetingDataSource(_getDataSource()),
+      monthViewSettings: MonthViewSettings(showAgenda: true),
+      dataSource: MeetingDataSource(_meetings),
       onTap: (CalendarTapDetails details) async {
-        // print(details.date!);
-        // print(details.appointments);
-        // print(details.targetElement);
-        //print("${user.displayName}\n${details.date}");
         print(details.targetElement);
-      
 
         if (details.targetElement == CalendarElement.calendarCell) {
           await showDialog(
@@ -97,35 +102,64 @@ class _MyCalendar extends State<MyCalendar> {
                 });
           }
         }
-        
       },
     ));
   }
+
+  Future<List<Meeting>> _getMeetings() async {
+    List<Meeting> meetings = [];
+    var userEventsSnapshot = await FirebaseFirestore.instance
+        .collection('users')
+        .doc(user.uid)
+        .collection('events')
+        .get();
+
+    int len = userEventsSnapshot.docs.length;
+    for (var i = 0; i < len; i++) {
+      var eventName = userEventsSnapshot.docs[i].data()['eventName'];
+      //print(userEventsSnapshot.docs[i].data()['classId']);
+      //print(userEventsSnapshot.docs[i].data()['className']);
+      var color = _getColor(int.parse(
+          userEventsSnapshot.docs[i].data()['background'].toString()));
+
+      var from = DateTime.fromMillisecondsSinceEpoch(
+          (userEventsSnapshot.docs[i].data()['from'].seconds * 1000));
+      var to = DateTime.fromMillisecondsSinceEpoch(
+          userEventsSnapshot.docs[i].data()['to'].seconds * 1000);
+      //print(userEventsSnapshot.docs[i].data()['type']);
+      var _meeting = Meeting(eventName, from, to, color, false);
+      meetings.add(_meeting);
+    }
+
+    return meetings;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    _getMeetings();
+    return FutureBuilder<List<Meeting>>(
+        future: _getMeetings(),
+        builder: (BuildContext context, AsyncSnapshot<List<Meeting>> snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return (Center(
+              child: CircularProgressIndicator(),
+            ));
+          } else if (snapshot.connectionState == ConnectionState.done) {
+            if (snapshot.hasError) {
+              return const Center(child: Text("Snapshot Error"));
+            } else if (snapshot.hasData && snapshot.data!.length > 0) {
+              var _meetingData = snapshot.data!.toList();
+              return _calendar(_meetingData);
+            } else {
+              print("empty data");
+              return _calendar([]);
+            }
+          }
+          return Text("Testing");
+        });
+  }
 }
 
-List<Meeting> _getDataSource() {
-  final List<Meeting> meetings = <Meeting>[];
-
-  final DateTime today = DateTime.now();
-  DateTime startTime = DateTime(today.year, today.month, today.day, 9, 0, 0);
-  DateTime endTime = startTime.add(const Duration(hours: 2));
-  meetings.add(Meeting(
-      'Conference', startTime, endTime, const Color(0xFF0F8644), false));
-
-  startTime = DateTime(today.year, today.month, today.day - 1, 12, 0, 0);
-  endTime = startTime.add(const Duration(hours: 1));
-  meetings
-      .add(Meeting('Doctors', startTime, endTime, randomOpaqueColor(), false));
-
-  startTime = DateTime(today.year, today.month, today.day + 2, 14, 0, 0);
-  endTime = startTime.add(const Duration(hours: 1));
-  meetings
-      .add(Meeting('Doctors', startTime, endTime, randomOpaqueColor(), false));
-
-  startTime = DateTime(today.year, today.month, today.day + 4, 15, 0, 0);
-  endTime = startTime.add(const Duration(hours: 1));
-  meetings
-      .add(Meeting('Doctors', startTime, endTime, randomOpaqueColor(), false));
-
-  return meetings;
+Color _getColor(int index) {
+  return colors[index];
 }

@@ -2,7 +2,10 @@ import 'dart:html';
 
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:simpleschool/widget/weekly_calendar_widget.dart';
+
+import 'package:simpleschool/widget/weekly_calendar_widget_v2.dart';
+import 'package:simpleschool/widget/user_class_list_widget.dart';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:string_validator/string_validator.dart';
 
@@ -39,11 +42,11 @@ class UserLoggedInWidget extends StatelessWidget {
 
     return Row(children: [
       Expanded(
-        flex: 15,
+        flex: 20,
         child: Container(
-          color: Colors.blue.shade100,
+          color: Colors.lightBlue.shade100,
           alignment: Alignment.center,
-          child: Column(children: [
+          child: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
             SizedBox(
               height: 5,
             ),
@@ -96,26 +99,13 @@ class UserLoggedInWidget extends StatelessWidget {
                 ],
               ),
             ),
-            Container(
-              height: 0.5,
-              color: Colors.blueGrey,
-              margin: EdgeInsets.fromLTRB(8, 0, 8, 0),
-            ),
-            SizedBox(
-              height: 5,
-            ),
-            Expanded(
-              flex: 80,
-              child: Column(
-                children: [Text("test"), Text("test"), Text("test")],
-              ),
-            ),
+            Expanded(child: UserClassListWidget(user: user)),
           ]),
         ),
       ),
-      Expanded(flex: 70, child: MyCalendar(title: "test", user: user)),
+      Expanded(flex: 70, child: MyCalendar2(title: "test", user: user)),
       Expanded(
-        flex: 15,
+        flex: 20,
         child: Container(
             color: Colors.grey,
             child: Center(

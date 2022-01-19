@@ -99,8 +99,6 @@ class _CalendarInputForm extends State<CalendarInputForm> {
       'Z': 51,
     };
 
-    print('\n');
-    print(id);
     int? ret = 0;
     for (var i = 0; i < id.length - 1; i++) {
       String char = id.substring(i, i + 1);
@@ -119,7 +117,7 @@ class _CalendarInputForm extends State<CalendarInputForm> {
   bool _validateForm(Map<String, dynamic> form) {
     //print("Validator");
     //print(form);
-    var eName = form['eventName'];
+    var eName = form['eventName'].toString().replaceAll(' ', '');
 
     if (!isAlphanumeric(eName) && eName == '') {
       print("Error eventName not alphanumeric or is empty");
@@ -144,7 +142,7 @@ class _CalendarInputForm extends State<CalendarInputForm> {
     if (!isDate(eventDate.toString()) && eventDate != null) {
       print("Error: Not a date or null");
       return false;
-    } else if (!isAfter(finalFrom.toString(), DateTime.now().toString())) {
+    } else if (isAfter(DateTime.now().toString(), finalFrom.toString())) {
       print(
           "Error: Entered time has already passed\nEntered DateTime: ${finalFrom.toString()}\nCurrent DateTime: ${DateTime.now().toString()}");
       return false;
@@ -158,7 +156,16 @@ class _CalendarInputForm extends State<CalendarInputForm> {
     return true;
   }
 
-  void saveToDB(Map<String, dynamic> form) {
+  Future<String> addToCollection(
+      String collection, Map<String, dynamic> document) async {
+    var col = FirebaseFirestore.instance.collection(collection);
+    var docRef = await col.add(document);
+    var docId = docRef.id;
+
+    return docId;
+  }
+
+  Future<void> saveToDB(Map<String, dynamic> form) async {
     CollectionReference users = FirebaseFirestore.instance.collection('users');
     CollectionReference event = FirebaseFirestore.instance.collection('events');
 
@@ -179,21 +186,29 @@ class _CalendarInputForm extends State<CalendarInputForm> {
     // DateTime finalTo = DateTime(year, month, day, toHour, toMinute);
 
     String classId = "oH2WanMY01MaYJTrEecY"; //Placeholder
+    String className = "Automata";
 
     //int color = int.parse(classId, radix: 16);
 
     int color = int.parse(convertIdToIntStr(classId), radix: 16);
     print(Color(color));
-    event.add({
+
+    var document = {
       'eventName': form['eventName'],
-      'from': finalFrom,
+      'from': finalFrom.toUtc(),
       'isAllDay': false,
-      'class': '/classes/${classId}',
+      'classId': '/classes/${classId}',
+      'className': className,
       'background': color,
       'to': null,
       'type': type,
       'description': "placeholder"
-    });
+    };
+
+    var eventId = await addToCollection('items', document);
+
+    await users.doc(user.uid).collection('items').add(document);
+    print(eventId);
   }
 
   @override

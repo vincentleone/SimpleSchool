@@ -3,13 +3,13 @@ import 'dart:math';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 
 class Meeting {
-  Meeting(this.eventName, this.from, this.to, this.background, this.isAllDay);
+  String? eventName;
+  DateTime? from;
+  DateTime? to;
+  Color? background;
+  bool? isAllDay;
 
-  String eventName;
-  DateTime from;
-  DateTime to;
-  Color background;
-  bool isAllDay;
+  Meeting(this.eventName, this.from, this.to, this.background, this.isAllDay);
 }
 
 class MeetingDataSource extends CalendarDataSource {
