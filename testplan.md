@@ -57,9 +57,37 @@ UI5.8: Functional\
 UI5.9: Integration\
 UI5.10: Results: Class Entered\
 
-
 **Database Testing**
-testtesttest
+**DB.1.1: DB Test 1**\
+DB1.2: This test will ensure that a user is added to the database when created.\
+DB1.3: The test will be checking for an user entry in the database.\
+DB1.4: Inputs: User creation\
+DB1.5: Outputs: Successful entry\
+DB1.6: Normal\
+DB1.7: Whitebox\
+DB1.8: Functional\
+DB1.9: Unit\
+DB1.10: Results: User added to database.\
+**DB.2.1: DB Test 2**\
+DB2.2: This test will ensure that a calendar item entry is added to the database when created.\
+DB2.3: The test will be checking for a calendar item entry in the database.\
+DB2.4: Inputs: Calendar item creation\
+DB2.5: Outputs: Successful entry\
+DB2.6: Normal\
+DB2.7: Whitebox\
+DB2.8: Functional\
+DB2.9: Unit\
+DB2.10: Results: Calendar item added to database.\
+**DB.3.1: DB Test 3**\
+DB3.2: This test will ensure that a class is added to the database when created.\
+DB3.3: The test will be checking for a class in the database.\
+DB3.4: Inputs: Class creation\
+DB3.5: Outputs: Class entry\
+DB3.6: Normal\
+DB3.7: Whitebox\
+DB3.8: Functional\
+DB3.9: Unit\
+DB3.10: Results: Class added to database.\
 
 **Full System User Testing**
 
@@ -72,3 +100,6 @@ testtesttest
 | UI3 | Normal | Whitebox | Functional | Integration |
 | UI4 | Abnormal | Whitebox | Functional | Integration |
 | UI5 | Abnormal | Whitebox | Functional | Integration |
+| DB1 | Normal | Whitebox | Functional | Integration |
+| DB2 | Normal | Whitebox | Functional | Integration |
+| DB3 | Normal | Whitebox | Functional | Integration |
