@@ -67,5 +67,8 @@ UI5.10: Results: Class Entered\
 **Test Case Matrix**
 | Test | Normal/Abnormal | Whitebox/Blackbox | Functional/Performance | Unit/Integration |
 | ------ | ------ | ------ | ------ | ------ |
-|  |  |
-|  |  |
+| UI1 | Normal | Whitebox | Functional | Integration |
+| UI2 | Normal | Whitebox | Functional | Integration |
+| UI3 | Normal | Whitebox | Functional | Integration |
+| UI4 | Abnormal | Whitebox | Functional | Integration |
+| UI5 | Abnormal | Whitebox | Functional | Integration |
