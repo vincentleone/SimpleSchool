@@ -32,6 +32,7 @@ To add an item to the calendar:
 To view other weeks that are not visible on the current calendar:
 - Press the current month and year dropdown on the top left of the calendar
 - Select the desired date.
+
 To return to the current date:
 - Press the Today button on the top right of the calendar.
 
