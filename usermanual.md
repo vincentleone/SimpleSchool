@@ -15,6 +15,12 @@ To create a class:
 - Enter class details in the correct fields.
 - Press Save to add class or Cancel to cancel.
 
+## Dropping Classes
+To drop a class:
+- Press the three lines next to a class on the left side of the screen.
+- Press the Gear icon.
+- Press Drop Class.
+
 ## Adding Calendar Items
 To add an item to the calendar:
 - Press on the calendar.
