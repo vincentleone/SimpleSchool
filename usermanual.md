@@ -1,4 +1,4 @@
-_**User Manual**_\
+# User Manual
 **Creating Account**\
 When logging in for the first time, create an account. Enter an email and a password to use.\
 **Adding Classes**\
