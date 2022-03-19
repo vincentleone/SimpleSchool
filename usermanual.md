@@ -16,5 +16,5 @@ To create a class:
 To add an item to the calendar:
 - Press on the calendar.
 - Select type of item to add to the calendar.
+- Fill out fields appropriately. 
 - Press Submit.
-- Fill out fields appropriately and press Submit.
