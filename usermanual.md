@@ -1,11 +1,11 @@
 # User Manual
 ## Creating Account
-When logging in for the first time, create an account. Enter an email and a password to use.\
+When logging in for the first time, create an account. Enter an email and a password to use.
 ## Adding Classes
 To add a class:
-- Press the + button next to "Classes" on the left hand side of the screen.\
-- Search for the class name or class ID, or scroll to find the class listed.\
-- Select Add Class to add the class to your class list, or press Class Details to see information such as professor email, class time time, and scheduled days.\
+- Press the + button next to "Classes" on the left hand side of the screen.
+- Search for the class name or class ID, or scroll to find the class listed.
+- Select Add Class to add the class to your class list, or press Class Details to see information such as professor email, class time time, and scheduled days.
 
 To create a class:
 - Press the + button next to "Classes" on the left hand side of the screen.
