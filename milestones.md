@@ -64,5 +64,7 @@
 |12| Test Frontend on iOS, Android, and Web|Leone|50|
 |13| Research Possible Tool Stack|Rapaport|5|
 |14| Select and Document Tool Stack|Both|5|
-|15|
+|15| Design Poster|Leone|2|
+|16| Design Presentation|Both|3|
+|17|
 >>>>>>> 5459566cbecaddfe393007ab038897cf6c38a9bc
