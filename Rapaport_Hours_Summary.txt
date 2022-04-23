@@ -1,0 +1,16 @@
+*Rapaport Hours Summary*
+Fall Semester
+- Weekly advisor meeting (15)
+- Assignments (report, ethics, etc.) (20)
+- Researching (UI programming, etc.) (40)
+- Diagramming (10)
+- Programming (20)
+
+Spring Semester
+- Weekly advisor meeting (15)
+- Assignments (poster, test plans, presentation, etc.) (30)
+- Researching (Discussion boards, poster, etc.) (40)
+- Diagramming and Wireframe creations (10)
+- Programming (400)
+- User testing (25)
+Total: 625 hours
